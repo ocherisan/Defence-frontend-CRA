@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { AuthPage } from './pages/AuthPage';
 import { LinkPage } from './pages/LinkPage';
 import { CreatePage } from './pages/CreatePage';
+import { useAuth } from './hooks/auth.hook';
+import { AuthContext } from './context/AuthContext';
 
 //const history = createBrowserHistory();
 
@@ -16,7 +18,11 @@ export const NotFound = () => {
 
 
 function App() {
+  //TODO:  обернуть в контекст провайдер
+  const {token, login, logout, userId} = useAuth();
+  const isAuthenticated = !!token;
   return (
+    <AuthContext.Provider value={{token, login, logout, userId, isAuthenticated}}>
     <Router>
         <Routes>
             <Route path='/' element={<HomePage/>}/>
@@ -26,6 +32,7 @@ function App() {
             <Route path="*" element={<NotFound />}/>
         </Routes>
     </Router>
+    </AuthContext.Provider>
   );
 }
 

@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../context/AuthContext";
 import { useHttp } from "../hooks/http.hook";
 
+//TODO: редирект куда-то после логина
 export const AuthPage = () => {
     const {loading, error, request, clearError} = useHttp();
     const [form, setForm] = useState({
         email:"",
         password:""
     });
+
+    const auth = useContext(AuthContext);
 
     useEffect(()=>{
         //TODO: вот тут добавить нотификацию
@@ -31,6 +35,8 @@ export const AuthPage = () => {
             const data = await request('/api/auth/login', 'POST', {...form})
             console.log(data.data);
             //TODO: оповестить, что пользователь успешно создан
+
+            auth.login(data.token, data.userId);
         } catch (error) {
             
         }
