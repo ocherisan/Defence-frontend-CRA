@@ -5,7 +5,7 @@ import { LinkPage } from './pages/LinkPage';
 import { CreatePage } from './pages/CreatePage';
 import { useAuth } from './hooks/auth.hook';
 import { AuthContext } from './context/AuthContext';
-import { Loader } from './components/Loader';
+import { Loader } from './components/Loader/Loader';
 
 //const history = createBrowserHistory();
 
@@ -29,8 +29,6 @@ function App() {
     <Router>
         <Routes>
             <Route path='/' element={<HomePage/>}/>
-            <Route path='/links' element={<LinkPage/>}/>
-            <Route path='create' element={<CreatePage/>}/>
             <Route path='login'  element={<AuthPage/>}/>
             <Route path="*" element={<NotFound />}/>
         </Routes>
