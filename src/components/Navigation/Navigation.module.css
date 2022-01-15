@@ -9,11 +9,15 @@
 
 .button {
     border-radius: 4px;
-    background-color: #eff0f5;
+    background-color: #a69ff3;
     padding: 8px;
+    cursor: pointer;
+    border: none;
+    font: inherit;
+    color: inherit;
     cursor: pointer;
 }
 
 .button:hover{
-    background-color: #d4d4dd;
+    background-color: #7A6EF4;
 }

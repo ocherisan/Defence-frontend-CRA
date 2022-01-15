@@ -15,8 +15,8 @@ export const Navigation = () => {
     return (
         <div className={styles.container}>
             <div>Defence practise</div>
-            {!isAuthenticated && <div className={styles.button} onClick={onLoginClick}>Login or Registration</div>}
-            {isAuthenticated && <><div className={styles.button}>Tasks</div><div className={styles.button}>Profile</div></>}
+            {!isAuthenticated && <button className={styles.button} onClick={onLoginClick}>Login or Registration</button>}
+            {isAuthenticated && <><button className={styles.button}>Tasks</button><button className={styles.button}>Profile</button></>}
         </div>
     )
 }

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { useHttp } from "../../hooks/http.hook";
 import { useMessage } from "../../hooks/message.hook";
+import styles from './AuthPage.module.css';
 
 export const AuthPage = () => {
     const {loading, error, request, clearError} = useHttp();
@@ -49,23 +50,29 @@ export const AuthPage = () => {
         }
     },[navigate, auth])
 
+    useEffect(()=>{
+        console.log(loading)
+    },[loading])
+
   return (
-    <div>
-      <span>Авторизация</span>
+      <div className={styles.container}>
+    <div className={styles.form}>
+      <div className={styles.header}>Вход в личный кабинет</div>
       <div>
-        <div>
-            <input placeholder="Введие email"  id="email" type="test" name="email" onChange={changeHandler}/>
+        <div className={styles.inputContainer}>
             <label htmlFor="email">Email</label>
+            <input placeholder="Введите email"  id="email" type="test" name="email" onChange={changeHandler}/>  
         </div>
-        <div>
-            <input placeholder="Введие пароль"  id="password" type="password" name="password" onChange={changeHandler}/>
+        <div className={styles.inputContainer}>
             <label htmlFor="password">Пароль</label>
+            <input placeholder="Введите пароль"  id="password" type="password" name="password" onChange={changeHandler}/>
         </div>
       </div>
-      <div>
+      <div className={styles.buttonsContainer}>
         <button onClick={loginHandler} disabled={loading}>Войти</button>
         <button onClick={registerHandler} disabled={loading}>Регистрация</button>
       </div>
+    </div>
     </div>
   );
 };
