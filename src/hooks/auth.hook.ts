@@ -23,9 +23,12 @@ export const useAuth = () => {
     },[]);
 
     useEffect(()=>{
-        const data = JSON.parse(localStorage.getItem(STORAGE_NAME) || "");
-        if (data && data.token) {
-            login(data.token, data.userId);
+        const userData = localStorage.getItem(STORAGE_NAME);
+        if (userData) {
+            const data = JSON.parse(userData);
+            if (data && data.token) {
+                login(data.token, data.userId);
+            }
         }
         setReady(true)
     },[login])

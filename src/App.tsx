@@ -19,7 +19,6 @@ export const NotFound = () => {
 
 
 function App() {
-  //TODO:  обернуть в контекст провайдер
   const {token, login, logout, userId, ready} = useAuth();
   const isAuthenticated = !!token;
   if (!ready) {

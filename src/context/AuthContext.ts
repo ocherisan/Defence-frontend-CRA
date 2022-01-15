@@ -1,7 +1,5 @@
 import { createContext } from "react";
 
-function noop(){}
-
 interface AuthorizationContextData {
     token: string | null, 
     userId: string | null, 
@@ -11,5 +9,5 @@ interface AuthorizationContextData {
 }
 
 export const AuthContext = createContext<AuthorizationContextData>({
-    token: null, userId: null, login: noop, logout: noop, isAuthenticated: false
+    token: null, userId: null, login: () => null, logout: () => null, isAuthenticated: false
 })

@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { useHttp } from "../hooks/http.hook";
+import { useMessage } from "../hooks/message.hook";
 
 //TODO: редирект куда-то после логина
 export const AuthPage = () => {
@@ -11,13 +12,14 @@ export const AuthPage = () => {
         password:""
     });
     const navigate = useNavigate();
+    const {setMessage} = useMessage();
 
     const auth = useContext(AuthContext);
 
     useEffect(()=>{
-        //TODO: вот тут добавить нотификацию
+        setMessage({text: error || "Something went wrong"})
         clearError();
-    },[error, clearError])
+    },[error, clearError, setMessage])
 
     const changeHandler = (event: any) => {
         setForm({...form, [event.target.name]: event.target.value})
