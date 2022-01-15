@@ -8,6 +8,8 @@ interface AuthorizationContextData {
     isAuthenticated: boolean
 }
 
+//TODO: перенсти в хуки не отделяя контекст
+
 export const AuthContext = createContext<AuthorizationContextData>({
     token: null, userId: null, login: () => null, logout: () => null, isAuthenticated: false
 })
