@@ -14,12 +14,12 @@ export const useHttp = () => {
             const response = await fetch(url,{method, body, headers});
             const data = await response.json();
             if (!response.ok) {
-                throw new Error(data.message, 'Что-то не так на сервере')
+                throw new Error(data.message)
             }
             return data;
-        } catch (e) {
-            setError(e.message);
-            throw e;
+        } catch (error) {
+            setError(error.message);
+            throw error;
         }
         finally{
             setLoading(false)
