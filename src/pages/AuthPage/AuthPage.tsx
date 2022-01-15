@@ -1,10 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
-import { useHttp } from "../hooks/http.hook";
-import { useMessage } from "../hooks/message.hook";
+import { AuthContext } from "../../context/AuthContext";
+import { useHttp } from "../../hooks/http.hook";
+import { useMessage } from "../../hooks/message.hook";
 
-//TODO: редирект куда-то после логина
 export const AuthPage = () => {
     const {loading, error, request, clearError} = useHttp();
     const [form, setForm] = useState({
@@ -28,7 +27,6 @@ export const AuthPage = () => {
         try {
             const data = await request('/api/auth/register', 'POST', {...form})
             console.log(data.data);
-            //TODO: оповестить, что пользователь успешно создан
         } catch (error) {
             
         }
@@ -38,7 +36,6 @@ export const AuthPage = () => {
         try {
             const data = await request('/api/auth/login', 'POST', {...form})
             console.log(data.data);
-            //TODO: оповестить, что пользователь успешно создан
 
             auth.login(data.token, data.userId);
         } catch (error) {
@@ -54,7 +51,6 @@ export const AuthPage = () => {
 
   return (
     <div>
-      <h1>сократи ссылку</h1>
       <span>Авторизация</span>
       <div>
         <div>
