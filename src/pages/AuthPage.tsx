@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { useHttp } from "../hooks/http.hook";
 
@@ -9,6 +10,7 @@ export const AuthPage = () => {
         email:"",
         password:""
     });
+    const navigate = useNavigate();
 
     const auth = useContext(AuthContext);
 
@@ -41,6 +43,12 @@ export const AuthPage = () => {
             
         }
     }
+
+    useEffect(()=>{
+        if (auth.isAuthenticated) {
+            navigate("../");
+        }
+    },[navigate, auth])
 
   return (
     <div>

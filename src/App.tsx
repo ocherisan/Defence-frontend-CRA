@@ -5,6 +5,7 @@ import { LinkPage } from './pages/LinkPage';
 import { CreatePage } from './pages/CreatePage';
 import { useAuth } from './hooks/auth.hook';
 import { AuthContext } from './context/AuthContext';
+import { Loader } from './components/Loader';
 
 //const history = createBrowserHistory();
 
@@ -19,8 +20,11 @@ export const NotFound = () => {
 
 function App() {
   //TODO:  обернуть в контекст провайдер
-  const {token, login, logout, userId} = useAuth();
+  const {token, login, logout, userId, ready} = useAuth();
   const isAuthenticated = !!token;
+  if (!ready) {
+    return <Loader/>
+  }
   return (
     <AuthContext.Provider value={{token, login, logout, userId, isAuthenticated}}>
     <Router>
