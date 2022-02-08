@@ -12,7 +12,7 @@ export const Navigation = () => {
   }, [navigate]);
 
   const openTasks = useCallback(() => {
-    navigate("../tasks");
+    navigate("../parts");
   }, [navigate]);
 
   const openProfile = useCallback(() => {
@@ -30,7 +30,7 @@ export const Navigation = () => {
       {isAuthenticated && (
         <div className={styles.buttonsContainer}>
           <button className={styles.button} onClick={openTasks}>
-            Tasks
+            Training
           </button>
           <button className={styles.button} onClick={openProfile}>
             Profile

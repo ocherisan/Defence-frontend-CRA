@@ -6,10 +6,14 @@ import classnames from "classnames/bind";
 const cx = classnames.bind(styles);
 
 interface TaskProps {
-  number: number;
+  partNumber: number;
+  taskNumber?: number;
 }
 
-export const Task: React.FunctionComponent<TaskProps> = ({ number }) => {
+export const Task: React.FunctionComponent<TaskProps> = ({
+  partNumber: number,
+  taskNumber,
+}) => {
   const [visiblePopup, setVisiblePopup] = useState(false);
 
   const toggleDecription = useCallback(() => {
@@ -23,7 +27,7 @@ export const Task: React.FunctionComponent<TaskProps> = ({ number }) => {
 
   return (
     <div className={classContainer}>
-      <div className={styles.taskContainer}>TASK {number}</div>
+      <div className={styles.taskContainer}>PART {number}</div>
       <div className={styles.toggleButton} onClick={toggleDecription}>
         {visiblePopup ? "X" : "T"}
       </div>

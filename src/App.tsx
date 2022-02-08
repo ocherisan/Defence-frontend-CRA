@@ -26,8 +26,10 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="login" element={<AuthPage />} />
-          <Route path="tasks" element={<TasksPage />}>
-            <Route path=":taskNumber" element={<TasksPage />} />
+          <Route path="parts" element={<TasksPage />}>
+            <Route path=":partNumber" element={<TasksPage />}>
+              <Route path=":taskNumber" element={<TasksPage />} />
+            </Route>
           </Route>
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
