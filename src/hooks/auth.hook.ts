@@ -1,4 +1,6 @@
-import {useState, useCallback, useEffect} from 'react';
+import {useState, useCallback, useEffect, useContext} from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 const STORAGE_NAME = 'userData';
 
@@ -34,4 +36,15 @@ export const useAuth = () => {
     },[login])
 
     return {login, logout, token, userId, ready}
+}
+
+export const useRedirectToLogin = () => {
+    const { isAuthenticated } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    useEffect(()=>{
+        if (!isAuthenticated){
+            navigate('../login')
+        }
+    },[isAuthenticated, navigate])
 }

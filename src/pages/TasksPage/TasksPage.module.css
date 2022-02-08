@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  max-width: 100vw;
+}
+
+.tasksListContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 0;
+  width: 360px;
+  border-right: 1px solid #c6c6c6;
+}
+
+.tasksListContainer a {
+  text-decoration: none;
+}
+
+.taskNumber {
+  margin-right: 8px;
+}
+
+.task {
+  padding: 8px;
+}
+
+.task:hover {
+  background-color: aquamarine;
+  border-radius: 4px;
+  cursor: pointer;
+}
